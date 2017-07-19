@@ -10,4 +10,6 @@ cd /usr/share/elasticsearch/
 bin/elasticsearch-plugin install --batch x-pack
 cd -
 
-mv elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
+mv -f elasticsearch /etc/default/elasticsearch
+
+mv -f elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
