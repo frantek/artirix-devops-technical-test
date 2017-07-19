@@ -33,10 +33,10 @@ resource "aws_security_group" "elb" {
   description = "Used in the terraform"
   vpc_id      = "${aws_vpc.default.id}"
 
-  # HTTP access from anywhere
+  # ElasticSearch access from anywhere
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 9200
+    to_port     = 9200
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -65,10 +65,10 @@ resource "aws_security_group" "default" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # HTTP access from the VPC
+  # ElasticSearch access from the VPC
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 9200
+    to_port     = 9200
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
@@ -90,10 +90,10 @@ resource "aws_elb" "web" {
   instances       = ["${aws_instance.node1.id}","${aws_instance.node2.id}","${aws_instance.node3.id}"]
 
   listener {
-    instance_port     = 80
-    instance_protocol = "http"
-    lb_port           = 80
-    lb_protocol       = "http"
+    instance_port     = 9200
+    instance_protocol = "tcp"
+    lb_port           = 9200
+    lb_protocol       = "tcp"
   }
 }
 
