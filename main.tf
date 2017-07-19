@@ -29,8 +29,8 @@ resource "aws_subnet" "default" {
 
 # A security group for the ELB so it is accessible via the web
 resource "aws_security_group" "elb" {
-  name        = "terraform_example_elb"
-  description = "Used in the terraform"
+  name        = "terraform_elasticsearch_elb"
+  description = "Used in the elasticsearch cluster"
   vpc_id      = "${aws_vpc.default.id}"
 
   # ElasticSearch access from anywhere
@@ -53,8 +53,8 @@ resource "aws_security_group" "elb" {
 # Our default security group to access
 # the instances over SSH and HTTP
 resource "aws_security_group" "default" {
-  name        = "terraform_example"
-  description = "Used in the terraform"
+  name        = "terraform_elasticsearh"
+  description = "Used in the elasticsearch cluster"
   vpc_id      = "${aws_vpc.default.id}"
 
   # SSH access from anywhere
@@ -83,7 +83,7 @@ resource "aws_security_group" "default" {
 }
 
 resource "aws_elb" "web" {
-  name = "terraform-example-elb"
+  name = "terraform-elasticsearch-elb"
 
   subnets         = ["${aws_subnet.default.id}"]
   security_groups = ["${aws_security_group.elb.id}"]
