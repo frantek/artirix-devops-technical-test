@@ -135,13 +135,20 @@ resource "aws_instance" "node1" {
   subnet_id = "${aws_subnet.default.id}"
 
   # We run a remote provisioner on the instance after creating it.
-  # In this case, we just install nginx and start it. By default,
-  # this should be on port 80
+  # Copy across helper scripts, then install Java8 and Elasticsearch
+  # When started, should then be listening on 9200
+  
+  provisioner "file" {
+    source      = "scripts/"
+    destination = "/home/ubuntu/"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo sh /home/ubuntu/install-java8.sh",
+      "sudo sh /home/ubuntu/install-elasticsearch.sh",
+      "sudo service elasticsearch start",
     ]
   }
 }
@@ -179,13 +186,20 @@ resource "aws_instance" "node2" {
   subnet_id = "${aws_subnet.default.id}"
 
   # We run a remote provisioner on the instance after creating it.
-  # In this case, we just install nginx and start it. By default,
-  # this should be on port 80
+  # Copy across helper scripts, then install Java8 and Elasticsearch
+  # When started, should then be listening on 9200
+  
+  provisioner "file" {
+    source      = "scripts/"
+    destination = "/home/ubuntu/"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo sh /home/ubuntu/install-java8.sh",
+      "sudo sh /home/ubuntu/install-elasticsearch.sh",
+      "sudo service elasticsearch start",
     ]
   }
 }
@@ -223,13 +237,22 @@ resource "aws_instance" "node3" {
   subnet_id = "${aws_subnet.default.id}"
 
   # We run a remote provisioner on the instance after creating it.
-  # In this case, we just install nginx and start it. By default,
-  # this should be on port 80
+  # Copy across helper scripts, then install Java8 and Elasticsearch
+  # When started, should then be listening on 9200
+  
+  provisioner "file" {
+    source      = "scripts/"
+    destination = "/home/ubuntu/"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
+      "sudo sh /home/ubuntu/install-java8.sh",
+      "sudo sh /home/ubuntu/install-elasticsearch.sh",
+      "sudo service elasticsearch start",
     ]
   }
+
+
 }
