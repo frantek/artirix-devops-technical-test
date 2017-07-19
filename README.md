@@ -6,7 +6,7 @@ This is to answer the test posed to me to set up infrastructure as code. I have 
 * ELB is set up to go to 9200
 * Security groups to ELB and systems are set up so that 22 and 9200 are only open
 
-##Things to Do
+## Things to Do
 * Get ElasticSearch fully configured as a cluster
 * Optimise the Terraform config so more procedural
 * Include Packer as this is a recommended tool to use with Terraform
