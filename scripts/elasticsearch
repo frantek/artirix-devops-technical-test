@@ -21,7 +21,7 @@
 #PID_DIR=/var/run/elasticsearch
 
 # Additional Java OPTS
-ES_JAVA_OPTS="-Xms512m -Xmx512m"
+#ES_JAVA_OPTS=""
 
 # Configure restart on package upgrade (true, every other setting will lead to not restarting)
 #RESTART_ON_UPGRADE=true
@@ -64,5 +64,4 @@ MAX_OPEN_FILES=65535
 # property is set at boot time in /usr/lib/sysctl.d/elasticsearch.conf
 #MAX_MAP_COUNT=262144
 
-ES_HEAP_SIZE=512m
 MAX_LOCKED_MEMORY=unlimited

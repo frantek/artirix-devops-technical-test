@@ -12,4 +12,6 @@ cd -
 
 mv -f elasticsearch /etc/default/elasticsearch
 
+mv -f jvm.options /etc/elasticsearch/jvm.options
+
 mv -f elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
