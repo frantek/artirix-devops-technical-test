@@ -35,3 +35,10 @@ AWS credentials are pulled from the AWS cli config.
 * You can change more cluster-wide settings, such as number of shards to rebalance at once
 * You can use a more comprehensive Elasticsearch monitoring solution. Currently, CloudWatch only collects a few metrics, such as cluster status, number of nodes and documents, heap pressure and disk space. For most use-cases, you’ll need more info, such as the query latency and indexing throughput. And when something goes wrong, you’ll need more insight on JVM pool sizes, cache sizes, Garbage Collection or you may need to profile Elasticsearch
 * You can have clusters of more than 20 nodes.
+
+## Conclusion
+If you are looking to set up a small Elasticsearch cluster quickly (Less than 20 nodes) or starting out with Elasticsearch, then the AWS service is the way to go. 
+
+However once the infrastructure code has been written and a possible image is set up with AWS this can allow for almost unlimited scaling.
+
+Both these solutions have cost implications and will need to be considered when setting up an Elasticsearch Cluster. Time setting up infrastructure (EC2 deployment) vs easy deployment (AWS ElasticCloud Service) plus ongoing costs.
